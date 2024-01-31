@@ -20,6 +20,12 @@ public class SalaController {
         return salaService.findAllSalas();
     }
 
+    /*
+    * nuevo metodo para obtener la fecha de alta de la ultima sala
+    * */
+    @GetMapping("/fechaAltaSala")
+    public String fechaAltaSala(){ return "01/01/2023";  }
+
     @PostMapping("/creaSala")
     public Sala creaSala(@Valid @RequestBody Sala sala){
         return salaService.insertaSala(sala);
