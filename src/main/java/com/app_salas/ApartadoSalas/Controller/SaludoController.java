@@ -14,8 +14,17 @@ public class SaludoController {
     private final AtomicLong counter = new AtomicLong();
 
     @GetMapping("/saludo")
-    public Saludo holaMundo(@RequestParam(value="nombre",defaultValue = "mundo")String nombre){
-        //return new Saludo(counter.incrementAndGet(),String.format(template,nombre));
-        return new Saludo(counter.incrementAndGet(),String.format(template,nombre));
+    public Saludo holaMundo (
+                            @RequestParam   (
+                                            value="nombre",
+                                            defaultValue = "mundo"
+                                            )
+                            String nombre
+                            ){
+
+        return new Saludo   (
+                            counter.incrementAndGet(),
+                            String.format(template,nombre)
+                            );
     }
 }

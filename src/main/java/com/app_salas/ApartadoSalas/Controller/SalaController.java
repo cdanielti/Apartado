@@ -45,7 +45,9 @@ public class SalaController {
     }
 
     @GetMapping("/buscaSalaXNombre/{nombre}")
-    public Optional<Sala> buscasalaXNombre(@PathVariable String nombre) throws LocalNotFoundException {
+    public Optional<Sala> buscasalaXNombre  (
+                                            @PathVariable String nombre
+                                            ) throws LocalNotFoundException {
         //return salaService.findSalaNameWithJPQL(nombre);
         //return salaService.findBynombreSala(nombre);
         return salaService.findBynombreSalaIgnoreCase(nombre);

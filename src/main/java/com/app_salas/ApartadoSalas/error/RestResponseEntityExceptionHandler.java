@@ -19,13 +19,25 @@ import java.util.Map;
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(LocalNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ResponseEntity<ErrorMessage> localNotFoundException(LocalNotFoundException exception){
-        ErrorMessage message = new ErrorMessage(HttpStatus.NOT_FOUND,exception.getMessage());
+    public ResponseEntity<ErrorMessage> localNotFoundException
+            (
+            LocalNotFoundException exception
+            ){
+        ErrorMessage message = new ErrorMessage (
+                                                HttpStatus.NOT_FOUND,
+                                                exception.getMessage()
+                                                );
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
     }
 
     @Override
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
+    protected ResponseEntity<Object> handleMethodArgumentNotValid
+            (
+            MethodArgumentNotValidException ex,
+            HttpHeaders headers,
+            HttpStatusCode status,
+            WebRequest request
+            ) {
 
         Map<String,Object> errors = new HashMap<>();
         ex.getBindingResult().getFieldErrors().forEach(error->{
