@@ -28,25 +28,26 @@ public class SalaController {
     public String fechaAltaSala(){ return "01/01/2023";  }
 
     @PostMapping("/creaSala")
-    public Sala creaSala(@Valid @RequestBody Sala sala){
+    public Sala creaSala(@Valid @RequestBody final Sala sala){
         return salaService.insertaSala(sala);
     }
 
     @PutMapping("/updateSala/{id}")
-    public Sala updateSala(@PathVariable Long id ,@RequestBody Sala sala){
+    public Sala updateSala( @PathVariable final Long id ,
+                            @RequestBody final Sala sala ){
 
         return salaService.updateSala(id,sala);
     }
 
     @DeleteMapping("/borraSala/{id}")
-    public String borraSala(@PathVariable Long id){
+    public String borraSala(@PathVariable final Long id){
         salaService.borraSala(id);
         return "Successfully deleted";
     }
 
     @GetMapping("/buscaSalaXNombre/{nombre}")
     public Optional<Sala> buscasalaXNombre  (
-                                            @PathVariable String nombre
+                                            @PathVariable final String nombre
                                             ) throws LocalNotFoundException {
         //return salaService.findSalaNameWithJPQL(nombre);
         //return salaService.findBynombreSala(nombre);
